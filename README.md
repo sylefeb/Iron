@@ -9,7 +9,7 @@ Start from a compiled RISC-V binary, tell **Iron** which function symbols to tur
 
 (**Iron** was presented as a poster at the RISC-V European summit in 2023).
 
-> **Where's the source code?** It's coming soon! I'm hard at work implementing an improved version of reReg, and cleaning things up. There are also changes in Silice to be pushed upstreamed, [stay tuned](https://twitter.com/sylefeb)!
+> **Where's the source code?** It's coming soon! I'm hard at work implementing an improved version of reReg, and cleaning things up. There are also changes in Silice to be pushed upstream, [stay tuned](https://twitter.com/sylefeb)!
 
 ## But why?
 
