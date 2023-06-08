@@ -27,12 +27,14 @@ The objective of creating large combinational chains is to retrieve maximum flex
 
 ## Future work
 
-- It would be great to have **Iron** generate new opcodes using RISC-V extensions. Right now the CPU tracks special addresses corresponding to hardware function, which is not very elegant.
-- When targeting C, some specialized functions like `__mulsi3` or floating point functions like `__adddf3` could be intercepted and replaced by an optimized hardware implementation (even going through a FP pipeline with a FIFO!).
+- It would be great to have **Iron** generate new opcodes using RISC-V extensions. Right now the CPU tracks special addresses corresponding to hardware function, which is not very elegant. This could go through [the proposed composable extension mechanism](https://github.com/grayresearch/CFU).
+- When targeting C, some specialized functions like `__mulsi3` or floating point functions like `__adddf3` could be intercepted and replaced by an optimized hardware implementation.
 
-Both of these points are why I target the simplest ISA (RV32I) as I feel a future version of **Iron** should be able to figure out RV32IM on its own, replacing all calls to `__mulsi3` by an new instruction implementing the multiplication.
+Both of these points are why I currently target the simplest ISA (RV32I) as I feel a future version of **Iron** should be able to figure out this on its own, replacing all calls to e.g. `__mulsi3` by an new instruction implementing the multiplication -- producing something between RV32I and RV32IM automatically.
 
 - Beyond BRAM: currently **Iron** assumes everything happens in BRAM. A more elaborate memory model is required that could allow to wait while a cache gets filled. I also wonder how one could detect that a function is using a limited segment of memory. Could that be automatically mapped to BRAM?
+
+- Floats: When many floats are used, and if the CPU implements -F, it would likely be best for **Iron** and the CPU the share the FPU. This raises interesting questions. By the way the same applies for the memory controller (point before).
 
 ## Challenges
 
